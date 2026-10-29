@@ -1,0 +1,5 @@
+{
+  "java.project.sourcePaths": ["starter_project/src"],
+  "java.project.outputPath": "starter_project/out",
+  "files.encoding": "utf8"
+}

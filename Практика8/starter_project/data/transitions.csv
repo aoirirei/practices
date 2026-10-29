@@ -1,0 +1,7 @@
+﻿Исходный статус;submit;approve;reject;cancel;complete
+DRAFT;SUBMITTED;—;—;CANCELLED;—
+SUBMITTED;—;APPROVED;REJECTED;CANCELLED;—
+APPROVED;—;—;—;CANCELLED;COMPLETED
+REJECTED;—;—;—;—;—
+CANCELLED;—;—;—;—;—
+COMPLETED;—;—;—;—;—

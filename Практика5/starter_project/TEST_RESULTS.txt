@@ -1,0 +1,22 @@
+PASS ordinary
+PASS lower
+PASS upper
+PASS daily equality
+PASS daily above
+PASS weekly below
+PASS weekly above
+PASS spaces
+PASS old sample new rule
+PASS empty
+PASS null
+PASS 17
+PASS negative
+PASS text
+PASS four
+PASS six
+PASS trailing empty
+PASS middle empty
+PASS fraction
+PASS overflow
+PASS short array
+Passed: 21; failed: 0

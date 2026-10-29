@@ -1,0 +1,23 @@
+digraph Classes {
+graph [rankdir=TB];
+subgraph cluster_0 {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+g0_t [label="BusinessTrip {final}\n+ MIN_REASON_LENGTH: int = 10 {static final}\n− id: String {final}\n− start, end: LocalDate {final}\n− status: TripStatus = DRAFT\n− rejectionReason: String\n+ BusinessTrip(String, LocalDate, LocalDate)\n+ submit(): void    + approve(): void    + reject(String): void\n+ cancel(): void    + complete(LocalDate): void\n+ getId(): String    + getStart(): LocalDate    + getEnd(): LocalDate\n+ getStatus(): TripStatus    + getRejectionReason(): String\n− validateData(String, LocalDate, LocalDate): void {static}\n− requireStatus(TripStatus): void", shape=box];
+g0_enum [label="«enum» TripStatus\nDRAFT    SUBMITTED\nAPPROVED    REJECTED\nCANCELLED    COMPLETED", shape=box];
+g0_t -> g0_enum [label="текущий статус 1"];
+}
+subgraph cluster_1 {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+g1_main [label="Main\n+ main(String[]): void {static}\n− parseDate(String): LocalDate {static}\n− requireFields(String[], int): void {static}\n− requireTrip(BusinessTrip): void {static}\n− printTrip(BusinessTrip): void {static}", shape=box];
+g1_test [label="SelfCheck\n− passed, failed: int {static}\n− START, END: LocalDate {static final}\n+ main(String[]): void {static}\n− test(String, Runnable): void {static}\n− check(boolean): void {static}\n− expect(Class, Runnable): void {static}\n− tripAt(TripStatus): BusinessTrip {static}\n− action(BusinessTrip, int): void {static}", shape=box];
+g1_sv [label="BusinessTripService\n− trips: Map<String, BusinessTrip> {final}\n+ create(String, LocalDate, LocalDate): BusinessTrip\n+ getById(String): BusinessTrip\n+ findByStatus(TripStatus): List<BusinessTrip>", shape=box];
+g1_trip [label="BusinessTrip\nсм. предметную диаграмму", shape=box];
+g1_st [label="«enum» TripStatus\nсм. предметную диаграмму", shape=box];
+g1_main -> g1_sv [label="использует"];
+g1_test -> g1_sv [label="проверяет"];
+g1_sv -> g1_trip [label="хранит 0..*"];
+g1_sv -> g1_st [label="фильтр"];
+}
+}

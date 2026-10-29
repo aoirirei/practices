@@ -1,0 +1,13 @@
+digraph G {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+m [label="Main\n+ main(String[]): void [static]\n− parseBoolean(String): boolean [static]", shape=box];
+s [label="SelfCheck\n− passed, failed: int [static]\n− ROUTER: ApprovalRouter [static final]\n+ main(String[]): void [static]\n− check(String, long, boolean, RiskLevel,\n  boolean, ApprovalRoute): void [static]\n− invalid(String, long, RiskLevel): void [static]", shape=box];
+a [label="ApprovalRouter\n+ FINANCE_LIMIT: long = 10 [static final]\n+ route(long, boolean, RiskLevel, boolean): ApprovalRoute\n− validate(long, RiskLevel): void", shape=box];
+route [label="«enum» ApprovalRoute\nSTANDARD\nFAST_TRACK\nFINANCE_REVIEW\nDIRECTOR_REVIEW\nSECURITY_REVIEW", shape=box];
+risk [label="«enum» RiskLevel\nLOW\nMEDIUM\nHIGH", shape=box];
+m -> a [label="вызывает"];
+s -> a [label="проверяет"];
+a -> route [label="возвращает"];
+a -> risk [label="использует"];
+}

@@ -1,0 +1,15 @@
+﻿amount;urgent;risk;personal;route
+9;false;LOW;false;STANDARD
+9;true;LOW;false;FAST_TRACK
+10;false;LOW;false;FINANCE_REVIEW
+10;true;LOW;false;FINANCE_REVIEW
+11;false;LOW;false;FINANCE_REVIEW
+9;true;HIGH;false;DIRECTOR_REVIEW
+500000;true;HIGH;false;DIRECTOR_REVIEW
+500000;true;HIGH;true;SECURITY_REVIEW
+0;false;LOW;true;SECURITY_REVIEW
+0;true;MEDIUM;false;FAST_TRACK
+0;false;LOW;false;STANDARD
+499999;false;LOW;false;FINANCE_REVIEW
+500000;false;LOW;false;FINANCE_REVIEW
+500001;false;LOW;false;FINANCE_REVIEW

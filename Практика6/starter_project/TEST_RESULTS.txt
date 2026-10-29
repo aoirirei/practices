@@ -1,0 +1,23 @@
+PASS below -> STANDARD
+PASS equal -> FINANCE_REVIEW
+PASS above -> FINANCE_REVIEW
+PASS urgent below -> FAST_TRACK
+PASS urgent equal -> FINANCE_REVIEW
+PASS zero -> STANDARD
+PASS urgent zero -> FAST_TRACK
+PASS medium -> STANDARD
+PASS security over all -> SECURITY_REVIEW
+PASS security at zero -> SECURITY_REVIEW
+PASS director over finance -> DIRECTOR_REVIEW
+PASS director over urgent -> DIRECTOR_REVIEW
+PASS original 499999 -> FINANCE_REVIEW
+PASS original 500000 -> FINANCE_REVIEW
+PASS original 500001 -> FINANCE_REVIEW
+PASS max long -> FINANCE_REVIEW
+PASS sample 120000 -> FINANCE_REVIEW
+PASS sample high -> DIRECTOR_REVIEW
+PASS sample personal -> SECURITY_REVIEW
+PASS negative -> Сумма не может быть отрицательной
+PASS min long -> Сумма не может быть отрицательной
+PASS null risk -> Уровень риска не задан
+Passed: 22; failed: 0

@@ -1,0 +1,29 @@
+digraph Classes {
+graph [rankdir=TB];
+subgraph cluster_0 {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+g0_o [label="Order\n− employee: Employee {final}\n− items: List<OrderItem> {final}\n− status: OrderStatus = DRAFT\n+ Order(Employee)\n+ addProduct(Product, int): void    + removeProduct(String): void\n+ total(): double    + confirm(): void\n+ getItems(): List<OrderItem>    + getStatus(): OrderStatus\n+ getEmployee(): Employee    − ensureDraft(): void", shape=box];
+g0_i [label="OrderItem {final, immutable}\n+ MAX_QUANTITY: int = 10 {static final}\n− product: Product {final}    − quantity: int {final}\n+ OrderItem(Product, int)\n+ increase(int): OrderItem\n+ getProduct(): Product    + getQuantity(): int\n+ getLineTotal(): double", shape=box];
+g0_e [label="«record» Employee\n− id: String    − fullName: String\n+ Employee(String, String)\n+ id(): String    + fullName(): String", shape=box];
+g0_st [label="«enum» OrderStatus\nDRAFT\nCONFIRMED", shape=box];
+g0_p [label="Product {final, immutable}\n− id: String {final}\n− name: String {final}    − price: double {final}\n+ Product(String, String, double)\n+ getId(): String    + getName(): String\n+ getPrice(): double\n+ sameDefinition(Product): boolean", shape=box];
+g0_o -> g0_i [label="0..*", dir=both, arrowtail=diamond, arrowhead=none];
+g0_o -> g0_e [label="1"];
+g0_o -> g0_st [label="1"];
+g0_i -> g0_p [label="1"];
+}
+subgraph cluster_1 {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+g1_m [label="Main\n+ main(String[]): void {static}\n− requireFields(String[], int): void {static}", shape=box];
+g1_s [label="SelfCheck\n− passed, failed: int {static}\n+ main(String[]): void {static}\n− test(String, Runnable): void {static}\n− check(boolean): void {static}\n− expect(Class, Runnable): void {static}\n− order(): Order {static}", shape=box];
+g1_service [label="OrderService\n− catalog: Map<String, Product> {final}\n+ createOrder(Employee): Order\n+ createProduct(String, String, double): Product", shape=box];
+g1_o [label="Order\nсм. предметную диаграмму", shape=box];
+g1_p [label="Product\nсм. предметную диаграмму", shape=box];
+g1_m -> g1_service [label="использует"];
+g1_s -> g1_service [label="проверяет"];
+g1_service -> g1_o [label="создаёт"];
+g1_service -> g1_p [label="каталог 0..*"];
+}
+}

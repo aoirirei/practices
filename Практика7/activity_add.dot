@@ -1,0 +1,34 @@
+digraph G {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+s [label="Начало addProduct", shape=oval];
+guard [label="ensureDraft\nСтатус DRAFT?", shape=diamond];
+candidate [label="Создать candidate: OrderItem\nТовар задан, количество 1–10,\nстоимость конечна", shape=box];
+find [label="Цикл for по items\nНайти совпадение product.id", shape=box];
+found [label="Совпадение найдено?", shape=diamond];
+merge [label="Проверить sameDefinition\nexisting.increase(quantity)\nСоздать новую объединённую позицию\nКоличество не более 10", shape=box];
+new [label="Оставить candidate\nкак новую позицию", shape=box];
+checkold [label="Проверить конечность\ntotal − старая + новая стоимость", shape=box];
+checknew [label="Проверить конечность\ntotal + стоимость candidate", shape=box];
+set [label="items.set(i, candidate); return", shape=box];
+add [label="items.add(candidate)", shape=box];
+end [label="Завершение без ошибки", shape=oval];
+s -> guard [label=""];
+guard -> candidate [label="да"];
+candidate -> find [label=""];
+find -> found [label=""];
+found -> merge [label="да"];
+found -> new [label="нет"];
+merge -> checkold [label=""];
+new -> checknew [label=""];
+checkold -> set [label=""];
+checknew -> add [label=""];
+set -> end [label=""];
+add -> end [label=""];
+error [label="Исключение, items без изменений"];
+guard -> error [label="нет"];
+candidate -> error [label="ошибка"];
+merge -> error [label="конфликт или лимит"];
+checkold -> error [label="переполнение"];
+checknew -> error [label="переполнение"];
+}

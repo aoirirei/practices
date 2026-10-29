@@ -1,0 +1,37 @@
+digraph G {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+s [label="Начало main", shape=oval];
+input [label="Прочитать строку line", shape=box];
+null [label="line задана?", shape=diamond];
+split [label="parts = line.split(\";\", -1)", shape=box];
+five [label="parts.length == 5?", shape=diamond];
+init [label="hours = new int[5]; i = 0", shape=box];
+loop [label="i < parts.length?", shape=diamond];
+parse [label="trim; проверить формат;\nInteger.parseInt(parts[i])", shape=box];
+range [label="Целое int и\n0 ≤ hours[i] ≤ 16?", shape=diamond];
+inc [label="i++; повторить цикл", shape=box];
+calc [label="Вызвать total,\naverage,\novertimeDays,\nweeklyOvertime", shape=box];
+out [label="Вывести четыре\nрезультата", shape=box];
+err [label="IllegalArgumentException\nДля ошибки элемента\nуказать позицию i + 1", shape=box];
+catch [label="main перехватывает\nошибку и выводит\nсообщение", shape=box];
+end [label="Завершение", shape=oval];
+s -> input [label=""];
+input -> null [label=""];
+null -> split [label="да"];
+null -> err [label="нет"];
+split -> five [label=""];
+five -> init [label="да"];
+five -> err [label="нет"];
+init -> loop [label=""];
+loop -> parse [label="да"];
+loop -> calc [label="нет"];
+parse -> range [label=""];
+range -> inc [label="да"];
+range -> err [label="нет"];
+calc -> out [label=""];
+out -> end [label=""];
+err -> catch [label=""];
+catch -> end [label=""];
+inc -> loop [label="повтор"];
+}

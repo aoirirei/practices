@@ -1,0 +1,21 @@
+﻿Проверка;Фактический результат
+Причина 9 символов;Ошибка, остаётся SUBMITTED
+Причина 10 символов;REJECTED, причина сохранена
+Причина 11 символов;REJECTED
+9 символов плюс пробелы по краям;Ошибка: пробелы удаляются
+Пустая причина или null;IllegalArgumentException
+today = end − 1 день;Ошибка, остаётся APPROVED
+today = end;Ошибка, остаётся APPROVED
+today = end + 1 день;COMPLETED
+today = null из APPROVED;IllegalArgumentException
+Дата окончания раньше начала;IllegalArgumentException
+Один день: start = end;Разрешено создать и отправить
+Пустой id или отсутствующая дата;IllegalArgumentException
+approve из DRAFT;IllegalStateException
+cancel из COMPLETED;IllegalStateException
+Операции из REJECTED / CANCELLED;Все пять операций запрещены
+Повторный submit / approve;IllegalStateException
+Повтор id в сервисе;"Ошибка; исходная заявка сохранена"
+findByStatus после submit;Отражает новый статус
+Изменение списка результата поиска;UnsupportedOperationException
+2026-02-30 в консоли;Несуществующая календарная дата

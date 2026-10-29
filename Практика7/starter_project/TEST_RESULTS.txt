@@ -1,0 +1,41 @@
+PASS original product
+PASS blank product id
+PASS null name
+PASS zero price
+PASS negative price
+PASS NaN price
+PASS infinite price
+PASS blank employee
+PASS null employee
+PASS quantity 1
+PASS quantity 10
+PASS quantity 0
+PASS quantity 11
+PASS null product
+PASS negative delta
+PASS zero delta
+PASS huge delta
+PASS immutable item
+PASS merge 6 plus 4
+PASS merge 6 plus 5 rollback
+PASS same id same data
+PASS same id conflict
+PASS two products total
+PASS remove recalculates
+PASS unknown remove no-op
+PASS blank remove
+PASS empty total
+PASS confirm changes status
+PASS confirmed add blocked
+PASS confirmed remove blocked
+PASS repeat confirm blocked
+PASS list cannot clear
+PASS item cannot mutate order
+PASS list snapshot
+PASS catalog canonical product
+PASS catalog conflict
+PASS line overflow
+PASS order overflow rollback
+PASS sample valid rows
+PASS employee access
+Passed: 40; failed: 0

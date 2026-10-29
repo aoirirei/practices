@@ -1,0 +1,41 @@
+PASS scenario 1
+INPUT
+add;M01;Monitor 27;32990;2
+add;K01;Keyboard;4490;3
+add;M01;Monitor 27;32990;1
+list
+total
+confirm
+remove;M01
+total
+exit
+OUTPUT
+add;id;name;price;quantity | remove;id | list | total | confirm | exit
+Добавлено
+Добавлено
+Добавлено
+M01 Monitor 27 x3 = 98970.00
+K01 Keyboard x3 = 13470.00
+Статус: DRAFT
+Итого: 112440.00
+Заказ подтверждён
+Ошибка: Подтверждённый заказ нельзя изменять
+Итого: 112440.00
+
+PASS scenario 2
+INPUT
+add;P;Mouse;1000;6
+add;P;Mouse;1000;5
+total
+add;P;Mouse;1000;4
+total
+exit
+OUTPUT
+add;id;name;price;quantity | remove;id | list | total | confirm | exit
+Добавлено
+Ошибка: Превышен лимит или неверное увеличение количества
+Итого: 6000.00
+Добавлено
+Итого: 10000.00
+
+Passed: 2; failed: 0

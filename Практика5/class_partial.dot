@@ -1,0 +1,9 @@
+digraph G {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+main [label="Main\n────────────────────\n+ main(String[]): void\nВвод и вывод\nПерехват ошибки", shape=box];
+an [label="TimesheetAnalyzer\n────────────────────────────────\n+ DAYS: int = 5\n+ MIN_HOURS: int = 0    + MAX_HOURS: int = 16\n+ DAILY_NORM: int = 10    + WEEKLY_NORM: int = 40\nВсе поля public static final\n────────────────────────────────\n+ parseHours(String): int[]\n+ total(int[]): int\n+ average(int[]): double\n+ overtimeDays(int[]): int\n+ weeklyOvertime(int[]): int\n− checkHour(int, int): void\n− validateHours(int[]): void\nВсе методы static", shape=box];
+self [label="SelfCheck\n────────────────────\n− passed, failed: int\n+ main(String[]): void\n− check(String, boolean): void\n− valid(String, String, int,\n  double, int, int): void\n− invalid(String, String, String): void", shape=box];
+main -> an [label="использует"];
+self -> an [label="проверяет"];
+}

@@ -1,0 +1,23 @@
+digraph G {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+s [label="Создать Order через OrderService", shape=oval];
+read [label="Прочитать команду пользователя", shape=box];
+exit [label="Команда exit или конец ввода?", shape=diamond];
+end [label="Завершение", shape=oval];
+add [label="Команда add?", shape=diamond];
+op [label="Другие команды\nremove: removeProduct(id)\nlist: getItems и getStatus\ntotal: вычислить total()\nconfirm: проверить DRAFT\nи установить CONFIRMED", shape=box];
+product [label="createProduct: id и имя заполнены;\nцена положительна и конечна;\nid не конфликтует с каталогом", shape=box];
+order [label="addProduct: статус DRAFT, товар задан,\nколичество от 1 до 10; при повторе id\nобъединить количество в пределах 10;\nпроверить конечность суммы до изменения", shape=box];
+print [label="Вывести результат или сообщение ошибки\nПри ошибке состав заказа не меняется", shape=box];
+s -> read [label=""];
+read -> exit [label=""];
+exit -> end [label="да"];
+exit -> add [label="нет"];
+add -> product [label="да"];
+add -> op [label="нет"];
+product -> order [label=""];
+order -> print [label=""];
+op -> print [label=""];
+print -> read [label="следующая команда"];
+}

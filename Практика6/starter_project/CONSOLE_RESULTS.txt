@@ -1,0 +1,29 @@
+PASS scenario 1
+INPUT
+9;true;LOW;false
+10;true;LOW;false
+500000;true;HIGH;true
+exit
+OUTPUT
+Вариант 1. Финансовый порог: 10
+Формат: amount;urgent;risk;personal. Для выхода: exit
+Пример: 9;true;LOW;false
+Маршрут: FAST_TRACK
+Маршрут: FINANCE_REVIEW
+Маршрут: SECURITY_REVIEW
+Программа завершена
+
+PASS scenario 2
+INPUT
+bad
+9;true;LOW;false
+exit
+OUTPUT
+Вариант 1. Финансовый порог: 10
+Формат: amount;urgent;risk;personal. Для выхода: exit
+Пример: 9;true;LOW;false
+Ошибка: Нужно ровно 4 поля
+Маршрут: FAST_TRACK
+Программа завершена
+
+Passed: 2; failed: 0

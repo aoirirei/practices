@@ -1,0 +1,34 @@
+digraph G {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+s [label="Начало route", shape=oval];
+v [label="amount ≥ 0\nи risk != null?", shape=diamond];
+err [label="Выбросить\nIllegalArgumentException", shape=box];
+p [label="containsPersonalData?", shape=diamond];
+sec [label="return SECURITY_REVIEW", shape=box];
+r [label="risk == HIGH?", shape=diamond];
+dir [label="return DIRECTOR_REVIEW", shape=box];
+f [label="amount ≥ FINANCE_LIMIT\n(10)?", shape=diamond];
+fin [label="return FINANCE_REVIEW", shape=box];
+u [label="urgent?", shape=diamond];
+fast [label="return FAST_TRACK", shape=box];
+std [label="return STANDARD", shape=box];
+end [label="Завершение метода", shape=oval];
+s -> v [label=""];
+v -> err [label="нет"];
+v -> p [label="да"];
+p -> sec [label="да"];
+p -> r [label="нет"];
+r -> dir [label="да"];
+r -> f [label="нет"];
+f -> fin [label="да"];
+f -> u [label="нет"];
+u -> fast [label="да"];
+u -> std [label="нет"];
+err -> end;
+sec -> end;
+dir -> end;
+fin -> end;
+fast -> end;
+std -> end;
+}

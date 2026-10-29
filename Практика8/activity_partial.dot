@@ -1,0 +1,23 @@
+digraph G {
+graph [rankdir=TB];
+node [shape=box, fontname="DejaVu Sans"];
+s [label="Получить команду для заявки", shape=oval];
+rules [label="Проверить исходный статус\nsubmit: DRAFT\napprove / reject: SUBMITTED\ncancel: DRAFT / SUBMITTED / APPROVED\ncomplete: APPROVED", shape=box];
+allowed [label="Исходный статус допустим?", shape=diamond];
+stateerr [label="IllegalStateException\nОбъект не меняется", shape=box];
+args [label="Проверить данные операции\nsubmit: id и даты заполнены, start ≤ end\nreject: reason != null, strip().length ≥ 10\ncomplete: today != null и today > end\napprove / cancel: дополнительных данных нет", shape=box];
+valid [label="Данные корректны?", shape=diamond];
+argerr [label="IllegalArgumentException\nОбъект не меняется", shape=box];
+change [label="Установить новый статус\nПри reject сначала сохранить reason.strip()\nВсе проверки пройдены", shape=box];
+end [label="Вернуть результат в Main", shape=oval];
+s -> rules [label=""];
+rules -> allowed [label=""];
+allowed -> stateerr [label="нет"];
+allowed -> args [label="да"];
+args -> valid [label=""];
+valid -> argerr [label="нет"];
+valid -> change [label="да"];
+change -> end [label=""];
+stateerr -> end [label="Main сообщает ошибку"];
+argerr -> end [label="Main сообщает ошибку"];
+}

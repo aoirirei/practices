@@ -1,0 +1,43 @@
+PASS scenario 1
+INPUT
+create;T1;2026-10-10;2026-10-12
+submit
+approve
+complete;2026-10-12
+show
+complete;2026-10-13
+cancel
+exit
+OUTPUT
+create;id;start;end | select;id | submit | approve | reject;reason
+cancel | complete[;testDate] | show | find;STATUS | exit
+Создана T1
+T1 2026-10-10..2026-10-12 SUBMITTED
+T1 2026-10-10..2026-10-12 APPROVED
+Тестовая дата: 2026-10-12
+Ошибка: Завершение возможно только после даты окончания
+T1 2026-10-10..2026-10-12 APPROVED
+Тестовая дата: 2026-10-13
+T1 2026-10-10..2026-10-12 COMPLETED
+Ошибка: Отмена недоступна из COMPLETED
+
+PASS scenario 2
+INPUT
+create;T2;2026-10-10;2026-10-12
+submit
+reject;123456789
+show
+reject;1234567890
+show
+exit
+OUTPUT
+create;id;start;end | select;id | submit | approve | reject;reason
+cancel | complete[;testDate] | show | find;STATUS | exit
+Создана T2
+T2 2026-10-10..2026-10-12 SUBMITTED
+Ошибка: Причина должна содержать минимум 10 символов
+T2 2026-10-10..2026-10-12 SUBMITTED
+T2 2026-10-10..2026-10-12 REJECTED | 1234567890
+T2 2026-10-10..2026-10-12 REJECTED | 1234567890
+
+Passed: 2; failed: 0
